@@ -1,0 +1,38 @@
+#!/usr/bin/perl
+
+use strict;
+use Data::Password::zxcvbn qw( password_strength );
+use Data::Dumper;
+
+my $pw = <>;
+$pw =~ s/\n//g;
+
+my $z = password_strength( $pw );
+
+print "SCORE out of 4: ";
+print $z->{ score } . "\n";
+
+my $a = clean( Dumper( $z->{ crack_times_display }{ online_throttling_100_per_hour }[0] ) );
+my $b = clean( Dumper( $z->{ crack_times_display }{ online_no_throttling_10_per_second }[0] ) );
+my $c = clean( Dumper( $z->{ crack_times_display }{ offline_slow_hashing_1e4_per_second }[0] ) );
+my $d = clean( Dumper( $z->{ crack_times_display }{ offline_fast_hashing_1e10_per_second }[0] ) );
+
+print "Time to crack:\n";
+print "  Online 100/hr: $a\n";
+print "  Online 10/sec: $b\n";
+print "  Offline slow : $c\n";
+print "  Offline fast : $d\n";
+
+print "Suggestions: " . clean( Dumper( $z->{ feedback }{ suggestions } ) ) . "\n";
+
+print "Warnings: " . clean( Dumper( $z->{ feedback }{ warning } ) ) . "\n";
+
+# EOF
+
+sub clean {
+  my $str = shift;
+  chomp $str;
+  $str =~ s/\$VAR1 = //;
+  $str =~ s/[\'\[\];]//g;
+  return $str;
+}
