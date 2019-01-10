@@ -24,3 +24,4 @@ Option 2:
     echo "my secret password" | ./zxcvbn
     # returns a score from 0 to 4, and estimated time to crack
 
+Password comes from standard input (STDIN) because it can contain any character, including special characters that could break if done as a command-line argument.
