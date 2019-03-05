@@ -1,27 +1,18 @@
 # zxcvbn
 A command-line implementation of the open-source zxcvbn password-strength tool
 
-This command-line implemtation is written in perl, and uses 2 perl modules.  So you must have perl installed with modules:
+To use:
 
-- Data::Password::zxcvbn
-- Data::Dumper
+- You must have node installed.
 
-To install with Perl CPAN:
+To install, download my `zxcvbn` stript and put in your path, or put in your home directory, then:
 
-    sudo perl -MCPAN -e 'CPAN::Shell->force(qw(install Data::Password::zxcvbn))'
-    sudo perl -MCPAN -e 'CPAN::Shell->force(qw(install Data::Dumper))'
-    
-Then, run this script.  Paste in your password, or pipe your password into it.
+    sudo npm install -g zxcvbn
+    # this installs the npm module https://www.npmjs.com/package/zxcvbn
+    chmod +x ./zxcvbn
 
-Option 1:
+To run this script:
 
     ./zxcvbn
-    # press enter, and type or paste your entire password. Press enter.
-    # returns a score from 0 to 4, and estimated time to crack
     
-Option 2:
-
-    echo "my secret password" | ./zxcvbn
-    # returns a score from 0 to 4, and estimated time to crack
-
-Password comes from standard input (STDIN) because it can contain any character, including special characters that could break if done as a command-line argument.
+It will sit and wait for you to input a password.  Press ENTER to generate a report about the password you entered.
