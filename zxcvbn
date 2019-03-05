@@ -7,7 +7,7 @@
 // install this script in your path, or run by typing:
 //   chmod +x ./zxcvbn
 //   ./zxcvbn
-// 
+//
 // if you get an error that module 'zxcvbn' cannot be found, try one or both of these commands:
 //  npm install -g zxcvbn
 //  export NODE_PATH=/usr/local/lib/node_modules
@@ -36,10 +36,10 @@ standard_input.on("data", function( data ) {
   console.log("Strength score (0=worst, 4=best): " + strengthReport.score);
   console.log("");
   console.log("Estimated time to crack this password:");
-  console.log("  Online (slow) at 100 guesses per hour: " + strengthReport.crack_times_display.online_throttling_100_per_hour);
-  console.log("  Online (fast) at 10 guesses per second: " + strengthReport.crack_times_display.online_no_throttling_10_per_second);
-  console.log("  Offline (slow) at 1,000 guesses per second: " + strengthReport.crack_times_display.offline_slow_hashing_1e4_per_second);
-  console.log("  Offline (fast) at 10 billion guesses per second: " + strengthReport.crack_times_display.offline_fast_hashing_1e10_per_second);
+  console.log("  Online (slow) at 100 guesses per hour      : " + strengthReport.crack_times_display.online_throttling_100_per_hour);
+  console.log("  Online (fast) at 10 guesses per second     : " + strengthReport.crack_times_display.online_no_throttling_10_per_second);
+  console.log("  Offline (slow) at 1,000 guesses per second : " + strengthReport.crack_times_display.offline_slow_hashing_1e4_per_second);
+  console.log("  Offline (fast) at 10 billion guesses/second: " + strengthReport.crack_times_display.offline_fast_hashing_1e10_per_second);
   console.log("");
   if ( typeof strengthReport.feedback === "object" ) {
     if ( strengthReport.feedback.warning ) {
