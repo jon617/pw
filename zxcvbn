@@ -1,38 +1,56 @@
-#!/usr/bin/perl
+#!/usr/local/bin/node
+// run on the command-line
+// returns a report of how strong your password is
+// install the npm module 'zxcvbn' by doing:
+//   npm install -g zxcvbn
+//
+// install this script in your path, or run by typing:
+//   chmod +x ./zxcvbn
+//   ./zxcvbn
+// 
+// if you get an error that module 'zxcvbn' cannot be found, try one or both of these commands:
+//  npm install -g zxcvbn
+//  export NODE_PATH=/usr/local/lib/node_modules
 
-use strict;
-use Data::Password::zxcvbn qw( password_strength );
-use Data::Dumper;
+'use strict'
 
-my $pw = <>;
-$pw =~ s/\n//g;
+var zxcvbn = require('zxcvbn');
 
-my $z = password_strength( $pw );
+// read the password from the command line
+var standard_input = process.stdin;
 
-print "SCORE out of 4: ";
-print $z->{ score } . "\n";
+// set the input character encoding
+standard_input.setEncoding("utf-8");
 
-my $a = clean( Dumper( $z->{ crack_times_display }{ online_throttling_100_per_hour }[0] ) );
-my $b = clean( Dumper( $z->{ crack_times_display }{ online_no_throttling_10_per_second }[0] ) );
-my $c = clean( Dumper( $z->{ crack_times_display }{ offline_slow_hashing_1e4_per_second }[0] ) );
-my $d = clean( Dumper( $z->{ crack_times_display }{ offline_fast_hashing_1e10_per_second }[0] ) );
+standard_input.on("data", function( data ) {
+  // user input
+  var strengthReport = zxcvbn(
+    data.replace(
+      new RegExp("\\n", "g"),
+     ""
+    )
+  );
 
-print "Time to crack:\n";
-print "  Online 100/hr: $a\n";
-print "  Online 10/sec: $b\n";
-print "  Offline slow : $c\n";
-print "  Offline fast : $d\n";
-
-print "Suggestions: " . clean( Dumper( $z->{ feedback }{ suggestions } ) ) . "\n";
-
-print "Warnings: " . clean( Dumper( $z->{ feedback }{ warning } ) ) . "\n";
-
-# EOF
-
-sub clean {
-  my $str = shift;
-  chomp $str;
-  $str =~ s/\$VAR1 = //;
-  $str =~ s/[\'\[\];]//g;
-  return $str;
-}
+  // score out of 4
+  console.log("");
+  console.log("Strength score (0=worst, 4=best): " + strengthReport.score);
+  console.log("");
+  console.log("Estimated time to crack this password:");
+  console.log("  Online (slow) at 100 guesses per hour: " + strengthReport.crack_times_display.online_throttling_100_per_hour);
+  console.log("  Online (fast) at 10 guesses per second: " + strengthReport.crack_times_display.online_no_throttling_10_per_second);
+  console.log("  Offline (slow) at 1,000 guesses per second: " + strengthReport.crack_times_display.offline_slow_hashing_1e4_per_second);
+  console.log("  Offline (fast) at 10 billion guesses per second: " + strengthReport.crack_times_display.offline_fast_hashing_1e10_per_second);
+  console.log("");
+  if ( typeof strengthReport.feedback === "object" ) {
+    if ( strengthReport.feedback.warning ) {
+      console.log("Warning: " + strengthReport.feedback.warning);
+    }
+    if ( (typeof strengthReport.feedback.suggestions === "object") && (strengthReport.feedback.suggestions.length > 0) ) {
+      console.log("Suggestions: ");
+      strengthReport.feedback.suggestions.forEach( function(suggestion) {
+        console.log("  " + suggestion);
+      });
+    }
+  }
+  process.exit();
+});
