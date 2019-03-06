@@ -37,6 +37,10 @@ If you got an error that npm command is not found, verify that you have `node` i
 
 # To run this script, just type:
 
+    /usr/local/bin/pw
+    
+or
+
     pw
 
 Type a password to check, then press ENTER.  Nothing will happen until you press enter.
