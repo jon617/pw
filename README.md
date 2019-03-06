@@ -7,8 +7,9 @@ To use:
 
 # Install my `pw` script:
 
-- Download my `pw` stript (it's an executable text file) and install into `/usr/local/bin/`
-- Once downloaded, make the script executable. Do this by typing:
+Download my `pw` stript (it's an executable text file) and install into `/usr/local/bin/`
+
+Once downloaded, make the script executable. Type:
 
     chmod +x /usr/local/bin/pw
 
