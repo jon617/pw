@@ -18,11 +18,11 @@ To use:
 Download my `pw` stript (it's an executable text file) and install into `/usr/local/bin/`. Here's a quick way to install from a browser.
 
 1. Go to https://raw.githubusercontent.com/jon617/pw/master/pw
-2. Select All (or highlight all with your mouse) and pulldown Edit, Copy.
+2. Select All (or highlight all with your mouse) and Copy.
 3. Open a shell, terminal, or bash window on your Linux or Mac computer. On Windows, use Ubuntu.
 4. On your shell/terminal, type: `sudo cat > /usr/local/bin/pw` and enter your sudo password if prompted.
-5. Right-click on the shell/terminal window to paste the file.
-6. Press **ENTER** to put a blank line at the end of the file you pasted.
+5. Right-click on the shell/terminal window to paste the script.
+6. Press **ENTER** at least once to put a blank line at the end of the file you pasted.
 7. On a Mac press **⌘-D** or on Linux press **CTRL-D** to end the file.
 
 Now that you have the `pw` script added to your `/usr/local/bin` directory, make the script executable. Type:
