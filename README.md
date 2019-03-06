@@ -23,7 +23,7 @@ Download my `pw` stript (it's an executable text file) and install into `/usr/lo
 4. On your shell/terminal, type: `sudo cat > /usr/local/bin/pw` and enter your sudo password if prompted.
 5. Right-click on the shell/terminal window to paste the script.
 6. Press **ENTER** at least once to put a blank line at the end of the file you pasted.
-7. On a Mac press **⌘-D** or on Linux press **CTRL-D** to end the file.
+7. On a Mac press **⌘-D** or Linux/PC press **CTRL-D** to end the file.
 
 Now that you have the `pw` script added to your `/usr/local/bin` directory, make the script executable. Type:
 
