@@ -1,34 +1,39 @@
-# zxcvbn
-A command-line implementation of the open-source zxcvbn password-strength tool
+# pw
+A command-line implementation of the open-source zxcvbn password-strength tool to check password strength
 
 To use:
 
 - You must have node installed. Type `node --version` on the command-line. If you get an error, download Node from https://nodejs.org/en/download/current/
 
-Download my `zxcvbn` stript and put in your path, or put in your home directory:
+# Install my `pw` script:
 
-    # from the directory where you downloaded my zxcvbn script, type:
-    chmod +x zxcvbn
+- Download my `pw` stript (it's an executable text file) and install into `/usr/local/bin/`
+- Once downloaded, make the script executable. Do this by typing:
 
-To install the npmjs module 'zxcvbn' type:
+    chmod +x /usr/local/bin/pw
+
+This script has a dependency of the npm module called `zxcvbn`, so install it by typing
 
     sudo npm install -g zxcvbn
 
-To run this script:
+If you got an error that npm command is not found, verify that you have `node` installed.  See above.
 
-    ./zxcvbn
-    # if that gives an error, try
-    node zxcvbn
-    
-It will sit and wait for you to input a password.  Press ENTER to generate a report about the password you entered.
+# To run this script, just type:
 
-This does not save your password to the command-line bash history, but does output it to your screen.
+    pw
+
+Type a password to check, then press ENTER.  Nothing will happen until you press enter.
+
+It's safe to type your password because:
+
+- Your password stays on your local machine. Nothing is transmitted to the Internet or saved to a file.
+- Your password is not saved to bash history.
 
 ----------
 
-Example:
+Example use for password `Z,W}13[H7OLc`:
 
-    ./zxcvbn
+    /usr/local/bin/pw
     Z,W}13[H7OLc
     
     Strength score (0=worst, 4=best): 4
@@ -39,9 +44,9 @@ Example:
       Offline (slow) at 1,000 guesses per second : 3 years
       Offline (fast) at 10 billion guesses/second: 2 minutes
 
-Another example:
+Another example, this with less-secure password of `P@ssword1`:
 
-    ./zxcvbn
+    /usr/local/bin/pw
     P@ssword1
     
     Strength score (0=worst, 4=best): 1
