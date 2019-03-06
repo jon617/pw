@@ -32,7 +32,6 @@ standard_input.on("data", function( data ) {
     )
   );
 
-  // score out of 4
   console.log("");
   console.log("Strength score (0=worst, 4=best): " + strengthReport.score);
   console.log("");
