@@ -2,15 +2,16 @@
 // run on the command-line
 // returns a report of how strong your password is
 // install the npm module 'zxcvbn' by doing:
-//   npm install -g zxcvbn
+//   sudo npm install -g zxcvbn
 //
-// install this script in your path, or run by typing:
-//   chmod +x ./zxcvbn
-//   ./zxcvbn
+// install this pw script into /usr/local/bin, then do
+//   sudo chmod +x /usr/local/bin/pw
 //
-// if you get an error that module 'zxcvbn' cannot be found, try one or both of these commands:
-//  npm install -g zxcvbn
+//
+// When running, if you get an error that module 'zxcvbn' cannot be found, try these commands:
+//  sudo npm install -g zxcvbn
 //  export NODE_PATH=/usr/local/lib/node_modules
+//  /usr/local/bin/pw
 
 'use strict'
 
