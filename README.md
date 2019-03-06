@@ -1,6 +1,14 @@
 # pw
 A command-line implementation of the open-source zxcvbn password-strength tool to check password strength
 
+How secure is your password?
+
+How long would it take a hacker to "guess" your password?
+
+This tool will check common dictionaries and patterns against your password to determine how long it would take a hacker to guess it.  See examples at the bottom of this README.
+
+----------------
+
 To use:
 
 - You must have node installed. Type `node --version` on the command-line. If you get an error, download Node from https://nodejs.org/en/download/current/
